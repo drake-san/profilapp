@@ -22,36 +22,72 @@ class _SideState extends State<Side> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
-              height: 120,
-              child: DrawerHeader(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/bg.png'), fit: BoxFit.cover)),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () => {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: ((context) => Info())))
-                      },
-                      icon: CircleAvatar(
-                        backgroundImage: AssetImage('assets/profilimage.jpeg'),
-                      ),
-                      iconSize: 50,
-                    ),
-                    Expanded(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              height: 140,
+              child: Stack(children: [
+                Container(
+                  color: Color(0xFF3A66FD),
+                  alignment: Alignment.center,
+                ),
+                Positioned(
+                  top: -20,
+                  left: 90,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Color(0xFF2154FF),
+                        borderRadius: BorderRadius.circular(100)),
+                    width: 300,
+                    height: 200,
+                  ),
+                ),
+                Positioned(
+                  top: -50,
+                  right: -100,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Color(0xFF093EFE),
+                        borderRadius: BorderRadius.circular(100)),
+                    width: 200,
+                    height: 200,
+                  ),
+                ),
+                Positioned(
+                    bottom: 20,
+                    left: 10,
+                    child: Container(
+                      child: IconButton(
+                          iconSize: 70,
+                          onPressed: () => {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Info()))
+                              },
+                          icon: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('assets/profilimage.jpeg'),
+                            radius: 50,
+                          )),
+                    )),
+                Positioned(
+                    top: 60,
+                    left: 120,
+                    child: Column(
                       children: [
                         Text(
                           "Le bg du 75",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
                         ),
-                        Text("Starfullah"),
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 5),
+                        ),
+                        Text(
+                          "Dev Fullstack",
+                          style: TextStyle(color: Colors.white, fontSize: 10),
+                        )
                       ],
                     ))
-                  ],
-                ),
-              ),
+              ]),
             ),
             Expanded(
                 child: ListView(
@@ -72,32 +108,21 @@ class _SideState extends State<Side> {
                 ListTile(
                   leading: const Icon(Icons.group),
                   title: const Text("Social"),
-                  trailing: Text(
-                    "14 new",
-                    style: TextStyle(
-                      background: Paint()
-                        ..color = Colors.purpleAccent
-                        ..strokeWidth = 20
-                        ..strokeCap = StrokeCap.round
-                        ..strokeJoin = StrokeJoin.round
-                        ..style = PaintingStyle.stroke,
-                      color: Colors.white,
-                    ),
+                  trailing: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Text("14 new",
+                        style: TextStyle(backgroundColor: Colors.purpleAccent)),
                   ),
                   onTap: () => Navigator.pop(context),
                 ),
                 ListTile(
                   leading: const Icon(Icons.label),
                   title: const Text("Promotions"),
-                  trailing: Text(
-                    "99+ new",
-                    style: TextStyle(
-                      background: Paint()
-                        ..color = Colors.greenAccent
-                        ..strokeCap = StrokeCap.round
-                        ..strokeJoin = StrokeJoin.round
-                        ..strokeWidth = 18
-                        ..style = PaintingStyle.stroke,
+                  trailing: ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Text(
+                      "99+ new",
+                      style: TextStyle(backgroundColor: Colors.greenAccent),
                     ),
                   ),
                   onTap: () => Navigator.pop(context),
